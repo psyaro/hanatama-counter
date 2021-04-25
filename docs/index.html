@@ -1,0 +1,63 @@
+
+<html>
+  <head>
+    <title>大麻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+      body{background-color: rgb(197, 240, 236);}
+    </style>
+
+  </head>        
+  <body>
+    <div class="container">
+      <div class="col-sm-12 col-md-12">
+        <!--
+        <div class="form-group">
+          <label>駅１</label>
+          <input type="text" id="orig" class="form-control" value="東京">
+          <label>駅２</label>
+          <input type="text" id="dest" class="form-control" value="町田">
+          <button id="submit" class="form-control btn btn-primary">送信</button>      
+        </div>
+        -->
+        <h3>hanatama counter</h3>
+        <p><span id="M" style="font-size: 100px;"></span>月</p>
+        <p><span id="d" style="font-size: 100px;"></span>日</p>
+        <p><span id="h" style="font-size: 100px;"></span>時間</p>
+        <p><span id="m" style="font-size: 100px;"></span>分</p>
+        <p><span id="s" style="font-size: 100px;"></span>秒経過</p>
+      </div>
+      
+    
+    <script>
+      function set2fig(num) {
+        var ret;
+        if( num < 10 ) { ret = "0" + num; }
+        else { ret = num; }
+        return ret;
+      }
+      function showClock2() {
+        let dt = new Date(1617640200 * 1000); // 1617640200 * 1000
+        let now = new Date();
+        dt.setMonth( now.getMonth() - dt.getMonth());
+        dt.setDate( now.getDate() - dt.getDate() );
+        dt.setHours( now.getHours() - dt.getHours() );
+        dt.setMinutes( now.getMinutes() - dt.getMinutes() );
+        dt.setSeconds( now.getSeconds() - dt.getSeconds() );
+        document.getElementById("M").innerHTML = set2fig(dt.getMonth());
+        document.getElementById("d").innerHTML = set2fig(dt.getDate());
+        document.getElementById("h").innerHTML = set2fig(dt.getHours());
+        document.getElementById("m").innerHTML = set2fig(dt.getMinutes());
+        document.getElementById("s").innerHTML = set2fig(dt.getSeconds());
+        console.log(dt);
+      }
+      setInterval('showClock2()',1000);      
+    </script>  
+    <footer>
+      このサイトはGoogle アナリティクスを使用していません。
+    </footer>    
+  </body>
+</html>
