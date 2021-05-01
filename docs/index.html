@@ -14,25 +14,18 @@
   <body>
     <div class="container">
       <div class="col-sm-12 col-md-12">
-        <!--
-        <div class="form-group">
-          <label>駅１</label>
-          <input type="text" id="orig" class="form-control" value="東京">
-          <label>駅２</label>
-          <input type="text" id="dest" class="form-control" value="町田">
-          <button id="submit" class="form-control btn btn-primary">送信</button>      
-        </div>
-        -->
         <h3>hanatama counter</h3>
         <p><span id="M" style="font-size: 100px;"></span>月</p>
         <p><span id="d" style="font-size: 100px;"></span>日</p>
         <p><span id="h" style="font-size: 100px;"></span>時間</p>
         <p><span id="m" style="font-size: 100px;"></span>分</p>
         <p><span id="s" style="font-size: 100px;"></span>秒経過</p>
+        <button></button>
       </div>
       
     
     <script>
+      //$()
       function set2fig(num) {
         var ret;
         if( num < 10 ) { ret = "0" + num; }
@@ -40,7 +33,7 @@
         return ret;
       }
       function showClock2() {
-        let dt = new Date(1617640200 * 1000); // 1617640200 * 1000
+        let dt = new Date(1617640200 * 1000);
         let now = new Date();
         dt.setMonth( now.getMonth() - dt.getMonth());
         dt.setDate( now.getDate() - dt.getDate() );

@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+    # web:
+    #     build: 
+    #       context: ./web
+    #     ports:
+    #       - "80:80"
+    #       - "443:443"
+    #     volumes:
+    #       - ./web/public:/etc/nginx/public
+    #       - ../ssl/certs/:/etc/pki/tls/certs/
+    #       - ../ssl/private/:/etc/pki/tls/private/
+    #       - ./gunicorn_socket:/tmp/gunicorn_socket
+    #     depends_on:
+    #       - app
+    #     container_name: web
+    #     restart: always
+    #     networks:
+    #       - network
+
+    app:
+        build: 
+          context: ./
+        volumes:
+          - ./:/app
+          #- ./gunicorn_socket:/tmp/gunicorn_socket
+        #depends_on:
+        #  - db
+        container_name: app
+        ports:
+            - 8001:8000
+        #networks:
+        #  - network
+        restart: always
+
+# volumes:
+#     db_data: {}
+
+# networks:
+#     network:
+#       driver: bridge
