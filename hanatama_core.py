@@ -1,7 +1,16 @@
 from datetime import datetime
 from time import time
-import settings
 import requests
+from os import getenv
+# settingsをインポートするのはできるだけ1ファイルにする
+try:
+    import settings
+except:
+    class settings:
+        s = int(getenv('hanatama'))
+        discord_webhooks = getenv('hanah').split(',')
+        private_hooks_url = getenv('private_hooks_url')
+
 
 def counter(s=settings.s, mode='datetime'):
     if mode == 'timestamp':
@@ -19,6 +28,9 @@ def send_to_discord(i=0):
         content=counter()[0]
     ))
     return 'Done'
+
+def private_hooks_url():
+    return settings.private_hooks_url
 
 def main():
     print(counter())
