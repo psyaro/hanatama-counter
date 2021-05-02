@@ -19,22 +19,30 @@ def counter(s=settings.s, mode='datetime'):
     delta = datetime.now() - datetime.fromtimestamp(s)
     return f'今日は{delta.days}日目です。良いですね！', delta
 
-def send_to_discord(i=0):
-    head = 'https://discord.com/api/webhooks/'
-    url = settings.discord_webhooks[i]
-    if not head in url:
-        url = head + url
-    requests.post(url, data=dict(
-        content=counter()[0]
-    ))
-    return 'Done'
+def send_to_discord(method_id=0):
+    if method_id == 1:
+        requests.post(
+            'https://discord.com/api/webhooks/' + settings.discord_webhooks[1], 
+            data=dict(
+                content='ワン'
+            )
+        )        
+    else:
+        head = 'https://discord.com/api/webhooks/'
+        url = settings.discord_webhooks[0]
+        if not head in url:
+            url = head + url
+        requests.post(url, data=dict(
+            content=counter()[0]
+        ))
+    return str(int(method_id)) + ' is Done'
 
 def private_hooks_url():
     return settings.private_hooks_url
 
 def main():
     print(counter())
-    send_to_discord()
+    send_to_discord(1)
 
 if __name__ == '__main__':
     main()

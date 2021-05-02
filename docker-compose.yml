@@ -32,7 +32,7 @@ services:
             - 8001:8000
         #networks:
         #  - network
-        restart: always
+        # restart: always
 
 # volumes:
 #     db_data: {}
